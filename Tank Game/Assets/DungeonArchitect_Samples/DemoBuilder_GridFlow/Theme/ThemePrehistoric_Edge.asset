@@ -1206,8 +1206,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1155.5728
     y: 392.07068
-    width: 324.2
-    height: 47.6
+    width: 324
+    height: 50
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -1866,8 +1866,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1785.7375
     y: 698.134
-    width: 441.8
-    height: 47.6
+    width: 436
+    height: 50
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -1878,7 +1878,8 @@ MonoBehaviour:
   graph: {fileID: 11400000}
   message: 'Try to make the chest face the wall using spatial constraints
 
-    otherwise, fallback to second node that doesn''t contain spatial constraints'
+    otherwise,
+    fallback to second node that doesn''t contain spatial constraints'
   background: {r: 0.6981132, g: 0.2561727, b: 0, a: 0.5254902}
   fontSize: 22
 --- !u!114 &-4154588304110102339
@@ -3008,8 +3009,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1590.1335
     y: 786.7798
-    width: 268.2
-    height: 47.6
+    width: 264
+    height: 50
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -3290,7 +3291,7 @@ MonoBehaviour:
   indexCounter:
     index: 85
   topZIndex:
-    index: 1036
+    index: 1051
   nodes:
   - {fileID: -7613491649348855151}
   - {fileID: 3185520184091121584}
@@ -4854,8 +4855,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 1599.2083
     y: 395.1467
-    width: 297.8
-    height: 47.6
+    width: 295
+    height: 50
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -5748,8 +5749,8 @@ MonoBehaviour:
     serializedVersion: 2
     x: 402.25018
     y: 385.75574
-    width: 470.6
-    height: 47.6
+    width: 462
+    height: 50
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
@@ -5758,8 +5759,9 @@ MonoBehaviour:
   inputPins: []
   outputPins: []
   graph: {fileID: 11400000}
-  message: "Key-Lock Markers. These names were chosen in the \"Create Key Lock\" node
-    \nof the Grid Flow Asset and their corresponding marker nodes are created below"
+  message: "Key-Lock Markers. These names were chosen in the \"Create Key Lock\"
+    node \nof the Grid Flow Asset and their corresponding marker nodes are created
+    below"
   background: {r: 0.16353686, g: 0.46226418, b: 0.43728074, a: 0.4117647}
   fontSize: 22
 --- !u!114 &5734660827365114404
@@ -6431,7 +6433,7 @@ MonoBehaviour:
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
-  selected: 1
+  selected: 0
   zIndex: 1036
   inputPins:
   - {fileID: 660756766789074846}
@@ -6854,8 +6856,8 @@ MonoBehaviour:
   canBeDeleted: 1
   canBeSelected: 1
   canBeMoved: 1
-  selected: 0
-  zIndex: 993
+  selected: 1
+  zIndex: 1051
   inputPins:
   - {fileID: -8213794144346923448}
   outputPins:
@@ -6880,7 +6882,7 @@ MonoBehaviour:
     e33: 1
   consumeOnAttach: 1
   attachmentProbability: 1
-  IsStatic: 1
+  IsStatic: 0
   affectsNavigation: 1
   selectionRuleEnabled: 0
   selectionRuleClassName: 
@@ -7185,7 +7187,7 @@ MonoBehaviour:
   canBeSelected: 1
   canBeMoved: 1
   selected: 0
-  zIndex: 990
+  zIndex: 1044
   inputPins: []
   outputPins:
   - {fileID: -8188697524429019880}
