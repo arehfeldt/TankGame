@@ -16,6 +16,7 @@ namespace DungeonArchitect.Builders.GridFlow
                 errorMessage = "Flow Asset is not assign in the configuration";
                 return false;
             }
+
             return true;
         }
 

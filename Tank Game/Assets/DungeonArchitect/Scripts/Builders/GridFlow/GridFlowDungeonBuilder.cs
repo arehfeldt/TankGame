@@ -14,6 +14,11 @@ namespace DungeonArchitect.Builders.GridFlow
         GridFlowDungeonConfig gridFlowConfig;
         GridFlowDungeonModel gridFlowModel;
         GridFlowExecNodeStates execNodeStates = null;
+        GridFlowAbstractGraph myGraph;
+        private string path = @"C:\Users\Grant\Desktop\GraphNodeInfo";
+        private bool outputRay = false;
+        private bool outputPretty = false;
+
         public GridFlowExecNodeStates ExecNodeStates
         {
             get
@@ -36,6 +41,11 @@ namespace DungeonArchitect.Builders.GridFlow
             base.BuildDungeon(config, model);
 
             GenerateLevelLayout();
+
+            // place to do analysis
+            myGraph = gridFlowModel.abstractGraph;
+            path += config.Seed + ".txt";
+            Analyze();
 
             var minimap = GetComponent<GridFlowMinimap>();
             if (minimap != null && minimap.initMode == GridFlowMinimapInitMode.OnDungeonRebuild)
@@ -417,6 +427,171 @@ namespace DungeonArchitect.Builders.GridFlow
         {
             
         }
+
+        // START OF MY METHODS
+
+        private void Analyze()
+        {
+            //PrintPrettyInfo(path);
+            //PrintRawInfo(path);
+        }
+
+        /* Outputs to .txt file on given path the following info:
+         * Node#
+         * Color in unity color format 
+         * Room Type
+         * X,Y Coordinates as int
+         *      > for 8x8 grid room 0 is 0,0, room 1 is 1,0, ..., room 8 is 0,1
+         * Item List (for our use its just a list of enemies)
+         *      > Item# (Node# - Item# for that node)
+         *          > Marker Name (For enemies is "Grunt")
+         *          > Item Type (For enemies is "Enemy")
+         */
+        private void PrintRawInfo(string path)
+        {
+            List<GridFlowAbstractGraphNode> graphNodes = myGraph.Nodes;
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            {
+                int i = 0;
+                foreach (GridFlowAbstractGraphNode gNode in graphNodes)
+                {
+                    file.WriteLine(i);
+                    file.WriteLine("Color: " + gNode.state.Color.ToString());
+                    file.WriteLine("Room Type: " + gNode.state.RoomType.ToString());
+                    file.WriteLine("Coordinates: " + gNode.state.GridCoord.x + ", " + gNode.state.GridCoord.y);
+                    List<GridFlowItem> items = gNode.state.Items;
+                    int j = 0;
+                    file.WriteLine("Item List: ");
+                    foreach (GridFlowItem item in items)
+                    {
+                        file.WriteLine("\t Item# " + i + " - " + j);
+                        file.WriteLine("\t \t Marker Name: " + item.markerName);
+                        file.WriteLine("\t \t Item Type: " + item.type.ToString());
+                        j++;
+                    }
+                    i++;
+                }
+            }
+        }
+
+        /* Outputs to given path the nodes organized by color
+         * DONT USE: currently has problem with getting correct amount of nodes for each color
+         */
+        private void PrintPrettyInfo(string path)
+        {
+            List<string> colorList = new List<string>();
+            colorList.Add("red");
+            colorList.Add("orange");
+            colorList.Add("yellow");
+            colorList.Add("green");
+            colorList.Add("blue");
+
+            List<GridFlowAbstractGraphNode> graphNodes = myGraph.Nodes;
+
+            using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
+            {
+                
+                foreach (string color in colorList)
+                {
+                    GridFlowAbstractGraphNode[] colorNodes = GetPathNodes(GetNodeWithColor(color).state.Color);
+                    file.WriteLine(color);
+                    int i = 0;
+                    foreach (GridFlowAbstractGraphNode node in colorNodes)
+                    {
+                        file.WriteLine("\tRoom " + i);
+                        file.WriteLine("\t\tCoordinates: " + colorNodes[i].state.GridCoord.x + ", " + colorNodes[i].state.GridCoord.y);
+                        if (color.Equals("green"))
+                        {
+                            if (colorNodes[i].state.Items.Count > 0)
+                            {
+                                string itemType = colorNodes[i].state.Items[0].type.ToString();
+                                if (itemType.Equals("Exit") || itemType.Equals("Entrace"))
+                                {
+                                    file.WriteLine("IS: " + itemType);
+                                }
+                            }
+                        }
+                        i++;
+                    }
+                }
+            }
+
+        }
+
+        /*
+         * Searches current list of nodes in graph for one with the desired color
+         * If one can not be found returns a null node
+         */
+        private GridFlowAbstractGraphNode GetNodeWithColor(string color)
+        {
+            GridFlowAbstractGraphNode targetNode = null;
+            bool found = false;
+            List<GridFlowAbstractGraphNode> graphNodes = myGraph.Nodes;
+            for (int i = 0; i < 63 && !found; i++)
+            {
+                if (ColorToString(graphNodes[i].state.Color).Equals(color))
+                {
+                    targetNode = graphNodes[i];
+                    found = true;
+                }
+            }
+
+            return targetNode;
+        }
+
+        // WARNING: currently has index out of bounds for nodeList call for some reason - PROBLEM IS NOT GETTING RIGHT NUMBER OF NODES FOR EACH COLOR
+        // Returns a list of all nodes in the current abstract graph which have the given color
+        // Color should be passed from pre existing nodes
+        private GridFlowAbstractGraphNode[] GetPathNodes(Color pathColor)
+        {
+            GridFlowAbstractGraphNode[] nodeList = new GridFlowAbstractGraphNode[100];
+            List<GridFlowAbstractGraphNode> graphNodes = myGraph.Nodes;
+            int i = 0;
+            foreach (GridFlowAbstractGraphNode node in graphNodes)
+            {
+                if (node.state.Color.Equals(pathColor))
+                {
+                    nodeList[i] = node;
+                    i++;
+                }
+            }
+
+            return nodeList;
+        }
+
+        // Converts RGBA color values to strings
+        // based upon preset colors, if preset path color changes this wont work 
+        private string ColorToString(Color givenColor)
+        {
+            string color;
+            if (givenColor.r == 1f)
+            {
+                if (givenColor.g == 0f)
+                {
+                    color = "red";
+                }
+                else if (givenColor.g == 0.500f)
+                {
+                    color = "orange";
+                }
+                else
+                {
+                    color = "yellow";
+                }
+            }
+            else
+            {
+                if (givenColor.g == 1f)
+                {
+                    color = "green";
+                }
+                else
+                {
+                    color = "blue";
+                }
+            }
+            return color;
+        }
     }
 
     public class GridFlowDungeonConstants
@@ -430,5 +605,7 @@ namespace DungeonArchitect.Builders.GridFlow
         public static readonly string MarkerDoorOneWay = "DoorOneWay";
 
     }
+
+
 
 }

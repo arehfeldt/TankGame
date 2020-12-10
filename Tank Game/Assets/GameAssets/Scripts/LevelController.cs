@@ -11,6 +11,7 @@ public class LevelController : MonoBehaviour
 
     private GameObject player;
     private Dungeon dungeon;
+    private DungeonArchitect.Builders.GridFlow.GridFlowDungeonConfig config;
 
     public void BuildDungeon()
     {
@@ -18,7 +19,10 @@ public class LevelController : MonoBehaviour
         dungeon.Config.Seed = (uint)Random.Range(0, 1000000);
         dungeon.Build();
         player.transform.position = GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position;
-    }
+
+		//config = (DungeonArchitect.Builders.GridFlow.GridFlowDungeonConfig)dungeon.Config;
+		//PrintNodes(config);
+	}
 
     public void DestroyDungeon()
     {
@@ -41,4 +45,17 @@ public class LevelController : MonoBehaviour
         SpawnPlayer();
         BuildDungeon();
     }
+
+    private void PrintNodes(DungeonArchitect.Builders.GridFlow.GridFlowDungeonConfig c)
+    {
+
+        List<DungeonArchitect.Graphs.GraphNode> nodes = c.flowAsset.execGraph.Nodes;
+        using (System.IO.StreamWriter file = new System.IO.StreamWriter(@"C:\Users\Grant\Desktop\NodeTest.txt"))
+        {
+            foreach (DungeonArchitect.Graphs.GraphNode node in nodes)
+            {
+                file.WriteLine(node.Id);
+			}
+		}
+	}
 }
