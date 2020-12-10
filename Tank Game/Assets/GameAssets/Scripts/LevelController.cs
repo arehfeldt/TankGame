@@ -7,6 +7,7 @@ public class LevelController : MonoBehaviour
 {
     public Dungeon Dungeon;
     public GameObject Player;
+    public GameObject Camera;
     public GameObject parent;
 
     private GameObject player;
@@ -39,16 +40,13 @@ public class LevelController : MonoBehaviour
     private void SpawnPlayer()
     {
         player = Instantiate(Player);
+        Instantiate(Camera);
     }
 
     private void Awake()
     {
         SpawnPlayer();
         BuildDungeon();
-        for(int i =0; i < 1; i++)
-        {
-            ResetDungeon();
-		}
     }
 
     private void PrintNodes(DungeonArchitect.Builders.GridFlow.GridFlowDungeonConfig c)

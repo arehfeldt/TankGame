@@ -8,7 +8,6 @@ public class PlayerTank : MonoBehaviour
     public GameObject parent;
     public GameObject turret;
     public GameObject body;
-    public GameObject gameCamera;
 
     private Rigidbody rigidBody;
 
@@ -27,7 +26,6 @@ public class PlayerTank : MonoBehaviour
     {
         RotateObject(body, KeyCode.A, KeyCode.D, 2f);
         RotateObject(turret, KeyCode.LeftArrow, KeyCode.RightArrow, 2f);
-        RotateObject(gameCamera, KeyCode.Q, KeyCode.E, 2f);
         Move();
         FireShell();
     }
