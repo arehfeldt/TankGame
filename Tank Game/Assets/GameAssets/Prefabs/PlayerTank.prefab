@@ -1,88 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &303133105433952343
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 303133105433952338}
-  - component: {fileID: 303133105433952341}
-  - component: {fileID: 303133105433952340}
-  m_Layer: 0
-  m_Name: Main Camera
-  m_TagString: MainCamera
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &303133105433952338
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303133105433952343}
-  m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 30, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5122751506315131505}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!20 &303133105433952341
-Camera:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303133105433952343}
-  m_Enabled: 1
-  serializedVersion: 2
-  m_ClearFlags: 1
-  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
-  m_projectionMatrixMode: 1
-  m_GateFitMode: 2
-  m_FOVAxisMode: 0
-  m_SensorSize: {x: 36, y: 24}
-  m_LensShift: {x: 0, y: 0}
-  m_FocalLength: 50
-  m_NormalizedViewPortRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
-  near clip plane: 0.3
-  far clip plane: 1000
-  field of view: 60
-  orthographic: 0
-  orthographic size: 5
-  m_Depth: -1
-  m_CullingMask:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_RenderingPath: -1
-  m_TargetTexture: {fileID: 0}
-  m_TargetDisplay: 0
-  m_TargetEye: 3
-  m_HDR: 1
-  m_AllowMSAA: 1
-  m_AllowDynamicResolution: 0
-  m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
-  m_StereoConvergence: 10
-  m_StereoSeparation: 0.022
---- !u!81 &303133105433952340
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 303133105433952343}
-  m_Enabled: 1
 --- !u!1 &303133106197474799
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 303133106197474796}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TankBody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -127,7 +44,7 @@ GameObject:
   - component: {fileID: 9043121948273415850}
   - component: {fileID: 1100855798084854496}
   - component: {fileID: 6945603358418359680}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TankTracksRight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -209,7 +126,7 @@ GameObject:
   - component: {fileID: 5301541310682167406}
   - component: {fileID: 8498414707221173230}
   - component: {fileID: 7075295279423940106}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TankChassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -296,7 +213,7 @@ GameObject:
   - component: {fileID: 8890470275069446843}
   - component: {fileID: 4675612601084337691}
   - component: {fileID: 4503292780654589177}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: PlayerTank
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -316,7 +233,6 @@ Transform:
   m_Children:
   - {fileID: 2631475487984648375}
   - {fileID: 303133106197474796}
-  - {fileID: 303133105433952338}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -351,7 +267,7 @@ MonoBehaviour:
   parent: {fileID: 5502409145060614347}
   turret: {fileID: 8932809770289798859}
   body: {fileID: 303133106197474799}
-  gameCamera: {fileID: 303133105433952343}
+  gameCamera: {fileID: 0}
 --- !u!135 &5995157213179706415
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -417,7 +333,7 @@ GameObject:
   - component: {fileID: 5134758065973746079}
   - component: {fileID: 112264997572695745}
   - component: {fileID: 6367318858910606221}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TankTracksLeft
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -499,7 +415,7 @@ GameObject:
   - component: {fileID: 2631475487984648375}
   - component: {fileID: 612166504928001375}
   - component: {fileID: 5629499779493546176}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: TankTurret
   m_TagString: Untagged
   m_Icon: {fileID: 0}
