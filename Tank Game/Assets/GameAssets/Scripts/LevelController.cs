@@ -27,6 +27,7 @@ public class LevelController : MonoBehaviour
     public void DestroyDungeon()
     {
         dungeon.DestroyDungeon();
+        Destroy(dungeon.gameObject);
     }
 
     public void ResetDungeon()
@@ -44,6 +45,10 @@ public class LevelController : MonoBehaviour
     {
         SpawnPlayer();
         BuildDungeon();
+        for(int i =0; i < 1; i++)
+        {
+            ResetDungeon();
+		}
     }
 
     private void PrintNodes(DungeonArchitect.Builders.GridFlow.GridFlowDungeonConfig c)

@@ -15,7 +15,8 @@ namespace DungeonArchitect.Builders.GridFlow
         GridFlowDungeonModel gridFlowModel;
         GridFlowExecNodeStates execNodeStates = null;
         GridFlowAbstractGraph myGraph;
-        private string path = @"C:\Users\Grant\Desktop\GraphNodeInfo";
+
+        private string path = @"C:\Users\Grant\Desktop\GraphInfo\";
         private bool outputRay = false;
         private bool outputPretty = false;
 
@@ -433,7 +434,7 @@ namespace DungeonArchitect.Builders.GridFlow
         private void Analyze()
         {
             //PrintPrettyInfo(path);
-            //PrintRawInfo(path);
+            PrintRawInfo(path);
         }
 
         /* Outputs to .txt file on given path the following info:
@@ -452,27 +453,72 @@ namespace DungeonArchitect.Builders.GridFlow
             List<GridFlowAbstractGraphNode> graphNodes = myGraph.Nodes;
             using (System.IO.StreamWriter file = new System.IO.StreamWriter(path))
             {
-                int i = 0;
                 foreach (GridFlowAbstractGraphNode gNode in graphNodes)
                 {
-                    file.WriteLine(i);
-                    file.WriteLine("Color: " + gNode.state.Color.ToString());
-                    file.WriteLine("Room Type: " + gNode.state.RoomType.ToString());
-                    file.WriteLine("Coordinates: " + gNode.state.GridCoord.x + ", " + gNode.state.GridCoord.y);
-                    List<GridFlowItem> items = gNode.state.Items;
-                    int j = 0;
-                    file.WriteLine("Item List: ");
-                    foreach (GridFlowItem item in items)
+                    bool isStart = false;
+                    bool isEnd = false;
+                    
+                    if (IsMainPath(gNode.state.Color))
                     {
-                        file.WriteLine("\t Item# " + i + " - " + j);
-                        file.WriteLine("\t \t Marker Name: " + item.markerName);
-                        file.WriteLine("\t \t Item Type: " + item.type.ToString());
-                        j++;
+                        List<GridFlowItem> items = gNode.state.Items;
+                        if (items.Count > 0)
+                        {
+                            if (items[0].type.ToString().Equals("Exit"))
+                            {
+                                isEnd = true;
+							}
+                            else if (items[0].type.ToString().Equals("Entrace"))
+                            {
+                                isStart = true;
+							}
+						}
                     }
-                    i++;
+                    else
+                    {
+                        
+                        GridFlowAbstractGraphNode[] outNodes = myGraph.GetOutgoingNodes(gNode);
+                        foreach (GridFlowAbstractGraphNode n in outNodes)
+                        {
+                            if (!n.state.Color.Equals(gNode.state.Color))
+                            {
+                                isEnd = true;
+                            }
+                        }
+                        GridFlowAbstractGraphNode[] inNodes = myGraph.GetIncomingNodes(gNode);
+                        foreach (GridFlowAbstractGraphNode n in inNodes)
+                        {
+                            if (!n.state.Color.Equals(gNode.state.Color))
+                            {
+                                isStart = true;
+                            }
+                        }
+                        
+                    }
+                    if (isStart)
+                    {
+                        file.WriteLine("Coordinates: " + gNode.state.GridCoord.x + ", " + gNode.state.GridCoord.y);
+                        file.WriteLine("\tColor: " + gNode.state.Color.ToString());
+                        file.WriteLine("\tStart/End: Start");
+                    }
+                    else if (isEnd)
+                    {
+                        file.WriteLine("Coordinates: " + gNode.state.GridCoord.x + ", " + gNode.state.GridCoord.y);
+                        file.WriteLine("\tColor: " + gNode.state.Color.ToString());
+                        file.WriteLine("\tStart/End: End");
+                    }
                 }
             }
         }
+
+        private bool IsMainPath(Color c)
+        {
+            bool result = false;
+            if (c.a == 1f && c.r == 0f && c.g == 1f && c.b ==0f)
+            {
+                result = true;
+			}
+            return result;
+		}
 
         /* Outputs to given path the nodes organized by color
          * DONT USE: currently has problem with getting correct amount of nodes for each color
