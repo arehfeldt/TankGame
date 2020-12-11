@@ -20,9 +20,8 @@ public class TankShooting : MonoBehaviour
     //private float m_ChargeSpeed;         
     private bool m_Fired;
     private float timer = 0.0f;
-    public float Fire_Interval = 1.0f;
+    public float Fire_Interval = 5.0f;
     private bool aggro;
-
 
     private void OnEnable()
     {
@@ -37,9 +36,8 @@ public class TankShooting : MonoBehaviour
 
         //m_ChargeSpeed = (m_MaxLaunchForce - m_MinLaunchForce) / m_MaxChargeTime;
         trackingInfo = gameObject.GetComponent<Enemy_Tank_Tracking>();
-
     }
-    
+
 
     private void Update()
     {
@@ -49,22 +47,23 @@ public class TankShooting : MonoBehaviour
         if (aggro)
         {
             timer += Time.deltaTime;
-		}
+        }
         else
         {
             timer = 0.0f;
-		}
+        }
 
         if (timer > Fire_Interval && !m_Fired)
         {
             Fire();
-		}
-		else if (timer > Fire_Interval && m_Fired)
-		{
-			m_Fired = false;
+        }
+        else if (timer > Fire_Interval && m_Fired)
+        {
+            m_Fired = false;
             timer = 0.0f;
-		}
-	}
+        }
+
+    }
 
 
 	private void Fire()

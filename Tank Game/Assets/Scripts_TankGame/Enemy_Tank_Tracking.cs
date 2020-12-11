@@ -10,40 +10,31 @@ public class Enemy_Tank_Tracking : MonoBehaviour
     GameObject player;
     Transform playerTransform;
     bool aggro = false;
-    bool foundPlayer = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        player = GameObject.FindGameObjectsWithTag("Player")[0];
+        playerTransform = player.transform;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!foundPlayer)
-        {
-            if (GameObject.FindGameObjectsWithTag("Player")[0] != null)
-            {
-                player = GameObject.FindGameObjectsWithTag("Player")[0];
-                playerTransform = player.transform;
-                foundPlayer = true;
-            }
-        }
-
         if (aggro)
         {
             enemy_tank_turret.transform.LookAt(playerTransform, Vector3.up);
         }
-
+        if (!playerTransform) return;
         if (Vector3.Distance(playerTransform.position, enemy_tank_turret.transform.position) < aggroRadius && player.activeSelf)
         {
             aggro = true;
-		}
+        }
         else
         {
             aggro = false;
-		}
+        }
+
     }
 
     public bool IsAggro()

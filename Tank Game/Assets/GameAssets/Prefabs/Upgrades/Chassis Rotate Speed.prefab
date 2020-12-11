@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1955027151417757533}
   - component: {fileID: 2566202651749000786}
   - component: {fileID: 8610738192321217365}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 1640778607564390169}
   - component: {fileID: 1923251305199384955}
   - component: {fileID: 8356113693751140337}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f95d985069db09141bf7e96a280b5ea3, type: 2}
+  - {fileID: 2100000, guid: ccbd13a61b1884639a18b6dd6e2ebc20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 1910466893992867708}
   - component: {fileID: 7416780199682199579}
   - component: {fileID: 4290258697944920788}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f95d985069db09141bf7e96a280b5ea3, type: 2}
+  - {fileID: 2100000, guid: ccbd13a61b1884639a18b6dd6e2ebc20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 6308545004479118952}
   - component: {fileID: 9080744281418121002}
   - component: {fileID: 1502001472067319855}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -347,7 +347,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f95d985069db09141bf7e96a280b5ea3, type: 2}
+  - {fileID: 2100000, guid: ccbd13a61b1884639a18b6dd6e2ebc20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -395,7 +395,7 @@ GameObject:
   - component: {fileID: 597127864550265286}
   - component: {fileID: 1410782019955400749}
   - component: {fileID: 5172435861697415839}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -490,9 +490,9 @@ GameObject:
   - component: {fileID: 758336619789781052}
   - component: {fileID: 4375391040147154671}
   - component: {fileID: 6968540783416701354}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chassis Rotate Speed
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -506,7 +506,7 @@ Transform:
   m_GameObject: {fileID: 9154108414035684567}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5004516762478224860}
   - {fileID: 2965989441907136677}
@@ -541,3 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ea5474c8f8f9d468a854eeaf75953f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradeType: Chassis Rotate Speed
+  Defender: {fileID: 8349683178016332125, guid: 4ad81cad888f8d544864e753d14c9e84,
+    type: 3}

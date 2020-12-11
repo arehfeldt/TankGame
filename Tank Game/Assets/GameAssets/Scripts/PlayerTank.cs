@@ -8,14 +8,17 @@ public class PlayerTank : MonoBehaviour
     public GameObject parent;
     public GameObject turret;
     public GameObject body;
-    public GameObject gameCamera;
 
     private Rigidbody rigidBody;
+    private TankHealth health;
+    private PlayerStats stats;
 
     // Start is called before the first frame update
     void Start()
     {
         rigidBody = GetComponent<Rigidbody>();
+        health = GetComponent<TankHealth>();
+        stats = GetComponent<PlayerStats>();
     }
 
     // Update is called once per frame
@@ -25,11 +28,13 @@ public class PlayerTank : MonoBehaviour
 
     private void FixedUpdate()
     {
-        RotateObject(body, KeyCode.A, KeyCode.D, 2f);
-        RotateObject(turret, KeyCode.LeftArrow, KeyCode.RightArrow, 2f);
-        RotateObject(gameCamera, KeyCode.Q, KeyCode.E, 2f);
-        Move();
-        FireShell();
+        if (!health.IsDead())
+        {
+            RotateObject(body, KeyCode.A, KeyCode.D, stats.rotateChassis);
+            RotateObject(turret, KeyCode.A, KeyCode.D, stats.rotateChassis);
+            RotateObject(turret, KeyCode.LeftArrow, KeyCode.RightArrow, stats.rotateTurret);
+            Move();
+        }
     }
 
     private void RotateObject(GameObject ourObject, KeyCode leftCode, KeyCode rightCode, float amount)
@@ -55,22 +60,27 @@ public class PlayerTank : MonoBehaviour
         if (Input.GetKey(KeyCode.W))
         {
             Debug.Log("Moving Forward");
-            Vector3 forwardVector = body.transform.rotation * Vector3.forward * 5;
+            Vector3 forwardVector = body.transform.rotation * Vector3.forward * stats.movementSpeed;
             rigidBody.velocity = forwardVector;
         }
         else if (Input.GetKey(KeyCode.S))
         {
             Debug.Log("Moving Backward");
-            Vector3 forwardVector = body.transform.rotation * Vector3.forward * 5;
+            Vector3 forwardVector = body.transform.rotation * Vector3.forward * stats.movementSpeed;
             rigidBody.velocity = -forwardVector;
         }
     }
 
-    private void FireShell()
+    public void Reset()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
+        health.Reset();
+        stats.Reset();
+        for (int i = 0; i < gameObject.transform.childCount; i++)
         {
-            Debug.Log("Fired Shell");
+            var child = gameObject.transform.GetChild(i).gameObject;
+            if (child != null)
+                child.SetActive(true);
         }
     }
+
 }

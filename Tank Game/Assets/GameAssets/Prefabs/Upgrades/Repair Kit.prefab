@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1495617182559320506}
   - component: {fileID: 3205474995434082485}
   - component: {fileID: 8691848268527105458}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,7 +107,7 @@ GameObject:
   - component: {fileID: 6371658272216057999}
   - component: {fileID: 8207126418845518285}
   - component: {fileID: 1961589563956350664}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61cf5c01b3b6b524b82d982ef45d669b, type: 2}
+  - {fileID: 2100000, guid: 85336105f38e44d4d99b4d33f1098cec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -203,7 +203,7 @@ GameObject:
   - component: {fileID: 8306117226788734936}
   - component: {fileID: 8641397873985385656}
   - component: {fileID: 5198876574324965480}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -251,7 +251,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61cf5c01b3b6b524b82d982ef45d669b, type: 2}
+  - {fileID: 2100000, guid: 85336105f38e44d4d99b4d33f1098cec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -298,7 +298,7 @@ GameObject:
   - component: {fileID: 552172060685985569}
   - component: {fileID: 2050479185296086730}
   - component: {fileID: 5199676471653940344}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 4753043614700632072}
   - component: {fileID: 5334865047423625813}
   - component: {fileID: 4381028202607041881}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -442,7 +442,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 61cf5c01b3b6b524b82d982ef45d669b, type: 2}
+  - {fileID: 2100000, guid: 85336105f38e44d4d99b4d33f1098cec, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -488,9 +488,9 @@ GameObject:
   - component: {fileID: 389277771255873243}
   - component: {fileID: 3699808014299107336}
   - component: {fileID: 8022568839596934989}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Repair Kit
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -504,7 +504,7 @@ Transform:
   m_GameObject: {fileID: 8136091562688256560}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 5373713872451818299}
   - {fileID: 2794930655895219778}
@@ -539,3 +539,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ea5474c8f8f9d468a854eeaf75953f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradeType: Repair Kit
+  Defender: {fileID: 8349683178016332125, guid: 4ad81cad888f8d544864e753d14c9e84,
+    type: 3}

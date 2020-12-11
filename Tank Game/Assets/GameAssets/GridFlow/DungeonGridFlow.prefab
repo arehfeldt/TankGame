@@ -35,7 +35,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 356014434834651142}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -113,7 +114,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cd0ef9172759d43928c6f1131063f690, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemParent: {fileID: 0}
+  itemParent: {fileID: 6393942667196740789}
 --- !u!114 &6964623521103253756
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -171,3 +172,33 @@ MonoBehaviour:
   icons:
     iconOneWayDoor: {fileID: 2800000, guid: ff9e76e1bb9817e4abcf4837dd91a594, type: 3}
   seeThroughWalls: 0
+--- !u!1 &6393942667196740789
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 356014434834651142}
+  m_Layer: 0
+  m_Name: Dungeon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &356014434834651142
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6393942667196740789}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3767238266741867094}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

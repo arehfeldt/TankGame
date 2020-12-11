@@ -14658,7 +14658,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_TankMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   m_ExplosionParticles: {fileID: 3755459174277899799}
   m_MaxDamage: 50
   m_MaxLifeTime: 2

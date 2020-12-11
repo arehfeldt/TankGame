@@ -13,9 +13,11 @@ public class TankHealth : MonoBehaviour
     
     //private AudioSource m_ExplosionAudio;          
     private ParticleSystem m_ExplosionParticles;   
-    public float m_CurrentHealth;  
-    private bool m_Dead;            
-
+    public float m_CurrentHealth;
+    private float m_MaxHealth;
+    private bool m_Dead;
+    private float damageCooldown = 2.5f;
+    private float damageTimer = 0f;
 
     private void Awake()
     {
@@ -29,21 +31,60 @@ public class TankHealth : MonoBehaviour
     private void OnEnable()
     {
         m_CurrentHealth = m_StartingHealth;
+        m_MaxHealth = m_StartingHealth;
         m_Dead = false;
+
+        
 
        // SetHealthUI();
     }
-    
+
+    public bool IsDead()
+    {
+        return m_Dead;
+    }
+
+    public void Reset()
+    {
+        m_CurrentHealth = m_StartingHealth;
+        m_MaxHealth = m_StartingHealth;
+        m_Dead = false;
+        damageTimer = 0f;
+    }
+
+    public void Repair(float amount)
+    {
+        m_CurrentHealth += amount;
+        m_CurrentHealth = (m_CurrentHealth > m_MaxHealth) ? m_MaxHealth : m_CurrentHealth;
+    }
+
+    public void IncreaseMaxHealth(float amount) 
+    {
+        m_MaxHealth += amount;
+        m_MaxHealth = (m_MaxHealth > 250) ? 250 : m_MaxHealth;
+        Repair(amount);
+    }
+
 
     public void TakeDamage(float amount)
     {
-        // Adjust the tank's current health, update the UI based on the new health and check whether or not the tank is dead.
-        m_CurrentHealth -= amount;
-
-        if (m_CurrentHealth <= 0f && !m_Dead)
+        if (damageTimer >= damageCooldown || gameObject.tag == "Enemy")
         {
-            OnDeath();
-		}
+            damageTimer = 0f;
+            amount = (amount > 20f) ? 20f : amount;
+            // Adjust the tank's current health, update the UI based on the new health and check whether or not the tank is dead.
+            m_CurrentHealth -= amount;
+            
+            if (m_CurrentHealth <= 0f && !m_Dead)
+            {
+                OnDeath();
+            }
+        }
+    }
+
+    private void Update()
+    {
+        damageTimer += Time.deltaTime;
     }
 
 
@@ -63,6 +104,18 @@ public class TankHealth : MonoBehaviour
 
         m_ExplosionParticles.Play();
 
-        gameObject.SetActive(false);
+        if (gameObject.tag == "Player")
+        {
+            for (int i = 0; i < gameObject.transform.childCount; i++)
+            {
+                var child = gameObject.transform.GetChild(i).gameObject;
+                if (child != null)
+                    child.SetActive(false);
+            }
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
     }
 }

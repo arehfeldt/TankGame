@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6234371598715706313}
   - component: {fileID: 5573654878368655906}
   - component: {fileID: 1803036702488199312}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -107,9 +107,9 @@ GameObject:
   - component: {fileID: 6074129333541650995}
   - component: {fileID: 7094578613527227616}
   - component: {fileID: 4501552040256060325}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Reload Speed
-  m_TagString: Untagged
+  m_TagString: Upgrade
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -123,7 +123,7 @@ Transform:
   m_GameObject: {fileID: 2433190967243220696}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 2}
   m_Children:
   - {fileID: 1999068458578014163}
   - {fileID: 8639255384069329578}
@@ -158,6 +158,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1ea5474c8f8f9d468a854eeaf75953f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UpgradeType: Reload Speed
+  Defender: {fileID: 8349683178016332125, guid: 4ad81cad888f8d544864e753d14c9e84,
+    type: 3}
 --- !u!1 &4944947389337294849
 GameObject:
   m_ObjectHideFlags: 0
@@ -170,7 +173,7 @@ GameObject:
   - component: {fileID: 5038443345161323858}
   - component: {fileID: 9030131657898749021}
   - component: {fileID: 3004744906893183322}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -265,7 +268,7 @@ GameObject:
   - component: {fileID: 3358568178401865981}
   - component: {fileID: 2255634798265568284}
   - component: {fileID: 2543414390249823333}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +316,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 40bf26c02f4a6104f908e1b231441fac, type: 2}
+  - {fileID: 2100000, guid: ccbd13a61b1884639a18b6dd6e2ebc20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -360,7 +363,7 @@ GameObject:
   - component: {fileID: 667085872192074855}
   - component: {fileID: 2362361888067319077}
   - component: {fileID: 5338363357497258528}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -408,7 +411,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 40bf26c02f4a6104f908e1b231441fac, type: 2}
+  - {fileID: 2100000, guid: ccbd13a61b1884639a18b6dd6e2ebc20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -456,7 +459,7 @@ GameObject:
   - component: {fileID: 2427162674370576479}
   - component: {fileID: 7143062051355718547}
   - component: {fileID: 5389535295673886773}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -504,7 +507,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 40bf26c02f4a6104f908e1b231441fac, type: 2}
+  - {fileID: 2100000, guid: ccbd13a61b1884639a18b6dd6e2ebc20, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
